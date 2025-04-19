@@ -1,20 +1,16 @@
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
-import { Utensils } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent,CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
-  Users, 
-  History, 
-  Target, 
-  Award,
   Star,
   Heart, 
   Shield,
   Clock,
   User,
-  Briefcase
+  Briefcase,
+  Utensils
 } from 'lucide-react';
 
 function About() {

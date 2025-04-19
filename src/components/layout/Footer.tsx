@@ -1,161 +1,129 @@
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
 import { 
-  BuildingIcon, 
-  PhoneCall, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  FacebookIcon, 
-  InstagramIcon, 
-  TwitterIcon, 
-  YoutubeIcon 
-} from 'lucide-react';
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from '@/components/ui/navigation-menu';
+import { Home, BuildingIcon, PanelTopIcon, BedDoubleIcon, ImageIcon, PhoneCallIcon, Menu } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
-export function Footer() {
+const routes = [
+  { name: 'Home', path: '/', icon: <Home className="h-4 w-4 mr-2" /> },
+  { name: 'About', path: '/about', icon: <BuildingIcon className="h-4 w-4 mr-2" /> },
+  { name: 'Facilities', path: '/facilities', icon: <PanelTopIcon className="h-4 w-4 mr-2" /> },
+  { name: 'Rooms', path: '/rooms', icon: <BedDoubleIcon className="h-4 w-4 mr-2" /> },
+  { name: 'Photos', path: '/photos', icon: <ImageIcon className="h-4 w-4 mr-2" /> },
+  { name: 'Contact Us', path: '/contact', icon: <PhoneCallIcon className="h-4 w-4 mr-2" /> },
+];
+
+export function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <footer className="bg-slate-900 text-white">
-      <div className="container mx-auto py-16 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* About Us Section */}
-          <div>
-            <div className="flex items-center space-x-2 mb-6">
-              <BuildingIcon className="h-8 w-8 text-primary" />
-              <span className="font-bold text-xl">Boy's Hostel</span>
-            </div>
-            <p className="text-slate-300 mb-6">
-              Our hostel provides a comfortable and secure living environment for students and working professionals. 
-              With modern amenities and a supportive community, we ensure your stay is productive and enjoyable.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-slate-300 hover:text-primary transition-colors">
-                <FacebookIcon className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-slate-300 hover:text-primary transition-colors">
-                <InstagramIcon className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-slate-300 hover:text-primary transition-colors">
-                <TwitterIcon className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-slate-300 hover:text-primary transition-colors">
-                <YoutubeIcon className="h-5 w-5" />
-              </a>
-            </div>
+    <header 
+      className={cn(
+        "fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-full border",
+        isScrolled 
+          ? "bg-white shadow-lg border-slate-200" 
+          : "bg-white border-slate-200"
+      )}
+    >
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between py-4">
+          <Link 
+            to="/" 
+            className="flex items-center space-x-2 text-slate-900"
+          >
+            <BuildingIcon className="h-8 w-8 text-primary" />
+            <span className="font-bold text-xl">Boy's Stay Hostel</span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-8">
+            <NavigationMenu>
+              <NavigationMenuList className="space-x-1">
+                {routes.map((route) => (
+                  <NavigationMenuItem key={route.path}>
+                    <Link to={route.path}>
+                      <NavigationMenuLink 
+                        className={cn(
+                          "px-4 py-2 rounded-full transition-colors duration-300 inline-flex items-center",
+                          location.pathname === route.path 
+                            ? "text-primary font-medium bg-primary/10" 
+                            : "text-slate-700 hover:text-primary hover:bg-primary/5"
+                        )}
+                      >
+                        {route.icon}
+                        {route.name}
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+
+            <Button 
+              asChild
+              className="rounded-full transition-all duration-300 font-medium bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              <Link to="/contact">Get in Touch</Link>
+            </Button>
           </div>
 
-          {/* Important Links Section */}
-          <div>
-            <h3 className="text-xl font-semibold mb-6">Important Links</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/" className="text-slate-300 hover:text-primary transition-colors flex items-center">
-                  <span className="mr-2">•</span> Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-slate-300 hover:text-primary transition-colors flex items-center">
-                  <span className="mr-2">•</span> About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/facilities" className="text-slate-300 hover:text-primary transition-colors flex items-center">
-                  <span className="mr-2">•</span> Facilities
-                </Link>
-              </li>
-              <li>
-                <Link to="/rooms" className="text-slate-300 hover:text-primary transition-colors flex items-center">
-                  <span className="mr-2">•</span> Rooms
-                </Link>
-              </li>
-              <li>
-                <Link to="/photos" className="text-slate-300 hover:text-primary transition-colors flex items-center">
-                  <span className="mr-2">•</span> Photo Gallery
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-slate-300 hover:text-primary transition-colors flex items-center">
-                  <span className="mr-2">•</span> Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Us Section */}
-          <div>
-            <h3 className="text-xl font-semibold mb-6">Contact Us</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <PhoneCall className="h-5 w-5 text-primary mr-3 mt-1" />
-                <div>
-                  <p className="text-slate-300">+1 (555) 123-4567</p>
-                  <p className="text-slate-300">+1 (555) 987-6543</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <Mail className="h-5 w-5 text-primary mr-3 mt-1" />
-                <div>
-                  <p className="text-slate-300">info@boyshostel.com</p>
-                  <p className="text-slate-300">support@boyshostel.com</p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <MapPin className="h-5 w-5 text-primary mr-3 mt-1" />
-                <p className="text-slate-300">
-                  123 University Avenue, College District,
-                  <br />City Center, State 12345
-                </p>
-              </li>
-              <li className="flex items-start">
-                <Clock className="h-5 w-5 text-primary mr-3 mt-1" />
-                <div>
-                  <p className="text-slate-300">Monday - Friday: 9am - 8pm</p>
-                  <p className="text-slate-300">Saturday - Sunday: 10am - 6pm</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          {/* Find Us on Google */}
-          <div>
-            <h3 className="text-xl font-semibold mb-6">Find Us on Google</h3>
-            <div className="h-64 bg-slate-800 rounded-lg overflow-hidden">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976397304605!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1645908687169!5m2!1sen!2s" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Google Maps"
-                className="grayscale"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-
-        <Separator className="bg-slate-700 my-8" />
-
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-slate-400 text-sm">
-            © {new Date().getFullYear()} Boy's Hostel. All rights reserved.
-          </p>
-          <div className="mt-4 md:mt-0">
-            <ul className="flex space-x-6 text-sm">
-              <li>
-                <a href="#" className="text-slate-400 hover:text-primary transition-colors">Privacy Policy</a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-primary transition-colors">Terms of Service</a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-primary transition-colors">Cookie Policy</a>
-              </li>
-            </ul>
-          </div>
+          {/* Mobile Navigation */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="lg:hidden rounded-full text-slate-900"
+              >
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <nav className="flex flex-col gap-4 mt-8">
+                {routes.map((route) => (
+                  <Link
+                    key={route.path}
+                    to={route.path}
+                    className={cn(
+                      "flex items-center px-4 py-3 rounded-lg transition-colors",
+                      location.pathname === route.path
+                        ? "bg-primary/10 text-primary font-medium"
+                        : "text-slate-700 hover:bg-slate-100"
+                    )}
+                  >
+                    {route.icon}
+                    {route.name}
+                  </Link>
+                ))}
+                <Button className="mt-4 rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Link to="/contact">Get in Touch</Link>
+                </Button>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
-    </footer>
+    </header>
   );
 }
