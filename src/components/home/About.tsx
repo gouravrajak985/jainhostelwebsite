@@ -43,22 +43,16 @@ export function About() {
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
         >
           <motion.div variants={itemVariants}>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Welcome to Boy's Hostel</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Welcome to Stay Boy's Hostel</h2>
             <div className="w-24 h-1 bg-primary mb-6"></div>
             <p className="text-slate-700 mb-6 leading-relaxed">
-              Our hostel provides a comfortable home away from home for students and working professionals. 
-              Located in the heart of the city, we offer convenient access to educational institutions, 
-              workplaces, and recreational facilities.
+            Jains Boys Stay Hostel provides accommodation for boys studying or working, as the best boys hostel in Bhopal. Our hostel in MP Nagar is easily accessible, affordable, and a hygienic place for boys to stay. Our main aim is to provide safety, reliable, and prompt services at a reasonable price.
             </p>
             <p className="text-slate-700 mb-6 leading-relaxed">
-              With modern amenities, spacious rooms, and a supportive community, we ensure that your stay 
-              is both productive and enjoyable. Our dedicated staff is committed to maintaining a safe, 
-              clean, and welcoming environment for all residents.
+            Being located in a highly recognized and posh area, it stands as a synonym for luxury accommodation in Bhopal. It is situated at a central point and is easily accessible from all major routes in Bhopal.
             </p>
             <p className="text-slate-700 mb-6 leading-relaxed">
-              Whether you're staying for a semester, a year, or longer, our hostel provides the perfect 
-              balance of privacy and community, allowing you to focus on your studies or work while 
-              building lasting friendships.
+            Our hostel is recognized as one of the top boys hostels in Bhopal — and for good reason. When young men move out of their homes for studies or work, they often wonder if they’ll find a space that feels secure, comfortable, and welcoming. We understand this concern and strive to provide an environment that feels like home.
             </p>
             <Button asChild className="mt-4">
               <Link to="/about">

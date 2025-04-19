@@ -10,7 +10,6 @@ export function Hero() {
     target: containerRef,
     offset: ["start start", "end start"]
   });
-  
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 

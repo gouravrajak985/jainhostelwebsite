@@ -56,7 +56,7 @@ export function Navbar() {
             className="flex items-center space-x-2 text-slate-900"
           >
             <BuildingIcon className="h-8 w-8 text-primary" />
-            <span className="font-bold text-xl">Boy's Hostel</span>
+            <span className="font-bold text-xl">Boy's Stay Hostel</span>
           </Link>
 
           {/* Desktop Navigation */}
