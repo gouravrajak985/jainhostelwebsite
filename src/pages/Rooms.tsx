@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { BedDoubleIcon, ExternalLink, Check, Info, Users, Square, Wifi, Tv, Wind } from 'lucide-react';
 
 interface Room {
@@ -440,86 +441,81 @@ export function Rooms() {
         </div>
       </section>
 
-      {/* Room Details Modal */}
-      {selectedRoom && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-bold">{selectedRoom.title}</h3>
-                <Button variant="ghost" size="sm" onClick={() => setSelectedRoom(null)}>
-                  X
-                </Button>
+      {/* Room Details Dialog */}
+      <Dialog open={selectedRoom !== null} onOpenChange={(open) => !open && setSelectedRoom(null)}>
+        <DialogContent className="max-w-4xl">
+          <DialogHeader>
+            <DialogTitle>{selectedRoom?.title}</DialogTitle>
+          </DialogHeader>
+          
+          {selectedRoom && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <AspectRatio ratio={16 / 9} className="rounded-lg overflow-hidden">
+                  <img
+                    src={selectedRoom.imageUrl}
+                    alt={selectedRoom.title}
+                    className="object-cover w-full h-full"
+                  />
+                </AspectRatio>
+                
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <Badge variant="outline" className="flex items-center">
+                    <Users className="mr-1 h-3 w-3" />
+                    {selectedRoom.occupancy}
+                  </Badge>
+                  <Badge variant="outline" className="flex items-center">
+                    <Square className="mr-1 h-3 w-3" />
+                    {selectedRoom.size}
+                  </Badge>
+                  <Badge className="bg-primary">{selectedRoom.price}</Badge>
+                </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <AspectRatio ratio={16 / 9} className="rounded-lg overflow-hidden">
-                    <img
-                      src={selectedRoom.imageUrl}
-                      alt={selectedRoom.title}
-                      className="object-cover w-full h-full"
-                    />
-                  </AspectRatio>
-                  
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    <Badge variant="outline" className="flex items-center">
-                      <Users className="mr-1 h-3 w-3" />
-                      {selectedRoom.occupancy}
-                    </Badge>
-                    <Badge variant="outline" className="flex items-center">
-                      <Square className="mr-1 h-3 w-3" />
-                      {selectedRoom.size}
-                    </Badge>
-                    <Badge className="bg-primary">{selectedRoom.price}</Badge>
-                  </div>
-                </div>
+              <div>
+                <p className="text-slate-700 mb-4">{selectedRoom.description}</p>
                 
-                <div>
-                  <p className="text-slate-700 mb-4">{selectedRoom.description}</p>
-                  
-                  <h4 className="font-semibold text-lg mb-2">Features</h4>
-                  <ul className="space-y-1 mb-4">
-                    {selectedRoom.features.map((feature, index) => (
-                      <li key={index} className="flex items-start">
-                        <Check className="h-4 w-4 text-primary shrink-0 mr-2 mt-0.5" />
-                        <span className="text-slate-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <h4 className="font-semibold text-lg mb-2">Amenities</h4>
-                  <ul className="space-y-1 mb-4">
-                    {selectedRoom.amenities.map((amenity, index) => (
-                      <li key={index} className="flex items-start">
-                        <Check className="h-4 w-4 text-primary shrink-0 mr-2 mt-0.5" />
-                        <span className="text-slate-700">{amenity}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <p className="text-slate-600 mb-4">
-                    <span className="font-medium">Availability:</span> {selectedRoom.availability}
-                  </p>
-                  
-                  <div className="flex space-x-4">
-                    <Button asChild className="flex-1">
-                      <a href="#" className="flex items-center justify-center">
-                        Book Now
-                      </a>
-                    </Button>
-                    <Button asChild variant="outline" className="flex-1">
-                      <a href={selectedRoom.tourLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-                        Virtual Tour <ExternalLink className="ml-2 h-4 w-4" />
-                      </a>
-                    </Button>
-                  </div>
+                <h4 className="font-semibold text-lg mb-2">Features</h4>
+                <ul className="space-y-1 mb-4">
+                  {selectedRoom.features.map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <Check className="h-4 w-4 text-primary shrink-0 mr-2 mt-0.5" />
+                      <span className="text-slate-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <h4 className="font-semibold text-lg mb-2">Amenities</h4>
+                <ul className="space-y-1 mb-4">
+                  {selectedRoom.amenities.map((amenity, index) => (
+                    <li key={index} className="flex items-start">
+                      <Check className="h-4 w-4 text-primary shrink-0 mr-2 mt-0.5" />
+                      <span className="text-slate-700">{amenity}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <p className="text-slate-600 mb-4">
+                  <span className="font-medium">Availability:</span> {selectedRoom.availability}
+                </p>
+                
+                <div className="flex space-x-4">
+                  <Button asChild className="flex-1">
+                    <a href="#" className="flex items-center justify-center">
+                      Book Now
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" className="flex-1">
+                    <a href={selectedRoom.tourLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                      Virtual Tour <ExternalLink className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

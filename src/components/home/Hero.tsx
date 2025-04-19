@@ -23,63 +23,99 @@ export function Hero() {
       <div className="absolute top-0 left-0 right-0 h-24" />
 
       {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          className="max-w-4xl mx-auto text-center"
-          style={{
-            y: contentY,
-            opacity: contentOpacity
-          }}
-        >
+      <div className="container mx-auto px-8 md:px-12 lg:px-16 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Left Content */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-left lg:pl-8"
+            style={{
+              y: contentY,
+              opacity: contentOpacity
+            }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Your Home Away <br />
-              From Home
-            </h1>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+                Your Home Away <br />
+                From Home
+              </h1>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl">
+                Experience comfortable living with modern amenities and a supportive community designed for your academic success.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-6"
+            >
+              <Button 
+                asChild
+                size="lg" 
+                className="text-lg px-10 py-6 bg-primary hover:bg-primary/90"
+              >
+                <Link to="/rooms">
+                  Explore Rooms
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button 
+                asChild
+                size="lg" 
+                variant="outline" 
+                className="text-lg px-10 py-6 text-white border-white hover:bg-white hover:text-slate-900"
+              >
+                <Link to="/contact">
+                  Book a Visit
+                </Link>
+              </Button>
+            </motion.div>
           </motion.div>
 
+          {/* Right Content - Building Image with Box Effect */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="relative hidden lg:block lg:pr-8"
           >
-            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Experience comfortable living with modern amenities and a supportive community designed for your academic success.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Button 
-              asChild
-              size="lg" 
-              className="text-lg px-8 bg-primary hover:bg-primary/90"
+            <motion.div
+              className="absolute inset-0 bg-primary/20 rounded-3xl transform -rotate-6"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            />
+            <motion.div
+              className="absolute inset-0 bg-primary/10 rounded-3xl transform rotate-3"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            />
+            <motion.div
+              className="relative bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden"
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.7 }}
             >
-              <Link to="/rooms">
-                Explore Rooms
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button 
-              asChild
-              size="lg" 
-              variant="outline" 
-              className="text-lg px-8 text-white border-white hover:bg-white hover:text-slate-900"
-            >
-              <Link to="/contact">
-                Book a Visit
-              </Link>
-            </Button>
+              <img 
+                src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" 
+                alt="Hostel Building" 
+                className="w-full h-[600px] object-cover rounded-3xl transform hover:scale-105 transition-transform duration-500"
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
