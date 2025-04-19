@@ -12,13 +12,16 @@ export function Hero() {
   });
   
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <div 
       ref={containerRef} 
-      className="relative min-h-screen flex items-center justify-center bg-slate-900 pt-24"
+      className="relative min-h-screen flex items-center justify-center bg-slate-900"
     >
+      {/* Spacer for navbar */}
+      <div className="absolute top-0 left-0 right-0 h-24" />
+
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
