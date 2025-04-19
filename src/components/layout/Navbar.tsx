@@ -3,14 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { 
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle
 } from '@/components/ui/navigation-menu';
-import { Home, BuildingIcon, PanelTopIcon, BedDoubleIcon, ImageIcon, PhoneCallIcon, Menu, X } from 'lucide-react';
+import { Home, BuildingIcon, PanelTopIcon, BedDoubleIcon, ImageIcon, PhoneCallIcon, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
