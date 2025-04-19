@@ -17,7 +17,7 @@ export function Hero() {
   return (
     <div 
       ref={containerRef} 
-      className="relative min-h-screen flex items-center justify-center bg-slate-900"
+      className="relative min-h-screen flex items-center justify-center bg-white"
     >
       {/* Spacer for navbar */}
       <div className="absolute top-0 left-0 right-0 h-24" />
@@ -38,7 +38,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+              <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 leading-tight">
                 Your Home Away <br />
                 From Home
               </h1>
@@ -49,7 +49,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl">
+              <p className="text-xl md:text-2xl text-slate-600 mb-10 max-w-2xl">
                 Experience comfortable living with modern amenities and a supportive community designed for your academic success.
               </p>
             </motion.div>
@@ -74,7 +74,7 @@ export function Hero() {
                 asChild
                 size="lg" 
                 variant="outline" 
-                className="text-lg px-10 py-6 text-white border-white hover:bg-white hover:text-slate-900"
+                className="text-lg px-10 py-6 text-slate-900 border-slate-200 hover:bg-slate-100"
               >
                 <Link to="/contact">
                   Book a Visit
@@ -120,7 +120,7 @@ export function Hero() {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-600"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}

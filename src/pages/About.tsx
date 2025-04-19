@@ -1,6 +1,6 @@
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
-import { Separator } from '@/components/ui/separator';
+import { Utensils } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -17,7 +17,7 @@ import {
   Briefcase
 } from 'lucide-react';
 
-export function About() {
+function About() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -458,3 +458,7 @@ export function About() {
     </>
   );
 }
+
+export default About;
+
+export { About }

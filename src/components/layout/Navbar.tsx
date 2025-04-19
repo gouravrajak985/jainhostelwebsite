@@ -45,23 +45,17 @@ export function Navbar() {
       className={cn(
         "fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-full border",
         isScrolled 
-          ? "bg-white/80 backdrop-blur-lg shadow-lg border-slate-200" 
-          : "bg-white/5 backdrop-blur-sm border-white/10"
+          ? "bg-white shadow-lg border-slate-200" 
+          : "bg-white border-slate-200"
       )}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between py-4">
           <Link 
             to="/" 
-            className={cn(
-              "flex items-center space-x-2 transition-colors duration-300",
-              isScrolled ? "text-slate-900" : "text-white"
-            )}
+            className="flex items-center space-x-2 text-slate-900"
           >
-            <BuildingIcon className={cn(
-              "h-8 w-8 transition-colors duration-300",
-              isScrolled ? "text-primary" : "text-white"
-            )} />
+            <BuildingIcon className="h-8 w-8 text-primary" />
             <span className="font-bold text-xl">Boy's Hostel</span>
           </Link>
 
@@ -77,9 +71,7 @@ export function Navbar() {
                           "px-4 py-2 rounded-full transition-colors duration-300 inline-flex items-center",
                           location.pathname === route.path 
                             ? "text-primary font-medium bg-primary/10" 
-                            : isScrolled 
-                              ? "text-slate-700 hover:text-primary hover:bg-primary/5" 
-                              : "text-white/90 hover:text-white hover:bg-white/10"
+                            : "text-slate-700 hover:text-primary hover:bg-primary/5"
                         )}
                       >
                         {route.icon}
@@ -93,13 +85,7 @@ export function Navbar() {
 
             <Button 
               asChild
-              variant={isScrolled ? "default" : "outline"}
-              className={cn(
-                "rounded-full transition-all duration-300 font-medium",
-                isScrolled 
-                  ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                  : "border-2 border-white/80 text-white hover:bg-white hover:text-slate-900"
-              )}
+              className="rounded-full transition-all duration-300 font-medium bg-primary text-primary-foreground hover:bg-primary/90"
             >
               <Link to="/contact">Get in Touch</Link>
             </Button>
@@ -111,10 +97,7 @@ export function Navbar() {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className={cn(
-                  "lg:hidden rounded-full",
-                  isScrolled ? "text-slate-900" : "text-white"
-                )}
+                className="lg:hidden rounded-full text-slate-900"
               >
                 <Menu className="h-6 w-6" />
               </Button>
