@@ -66,38 +66,39 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden md:flex">
-            <NavigationMenuList className="space-x-1">
-              {routes.map((route) => (
-                <NavigationMenuItem key={route.path}>
-                  <Link to={route.path}>
-                    <NavigationMenuLink 
-                      className={cn(
-                        "px-4 py-2 rounded-md transition-colors duration-300 inline-flex items-center",
-                        location.pathname === route.path 
-                          ? "text-primary font-medium bg-primary/10" 
-                          : isScrolled 
-                            ? "text-slate-700 hover:text-primary hover:bg-primary/5" 
-                            : "text-white/90 hover:text-white hover:bg-white/10"
-                      )}
-                    >
-                      {route.icon}
-                      {route.name}
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
+          <div className="hidden lg:flex items-center space-x-8">
+            <NavigationMenu>
+              <NavigationMenuList className="space-x-1">
+                {routes.map((route) => (
+                  <NavigationMenuItem key={route.path}>
+                    <Link to={route.path}>
+                      <NavigationMenuLink 
+                        className={cn(
+                          "px-4 py-2 rounded-full transition-colors duration-300 inline-flex items-center",
+                          location.pathname === route.path 
+                            ? "text-primary font-medium bg-primary/10" 
+                            : isScrolled 
+                              ? "text-slate-700 hover:text-primary hover:bg-primary/5" 
+                              : "text-white hover:text-white hover:bg-white/10"
+                        )}
+                      >
+                        {route.icon}
+                        {route.name}
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
 
-          {/* Contact Button */}
-          <div className="hidden md:block">
             <Button 
               asChild
               variant={isScrolled ? "default" : "outline"}
               className={cn(
-                "transition-all duration-300",
-                !isScrolled && "text-white border-white hover:bg-white hover:text-slate-900"
+                "rounded-full transition-all duration-300 font-medium",
+                isScrolled 
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                  : "border-2 border-white text-white hover:bg-white hover:text-slate-900"
               )}
             >
               <Link to="/contact">Get in Touch</Link>
@@ -111,7 +112,7 @@ export function Navbar() {
                 variant="ghost" 
                 size="icon" 
                 className={cn(
-                  "md:hidden",
+                  "lg:hidden rounded-full",
                   isScrolled ? "text-slate-900" : "text-white"
                 )}
               >
@@ -125,7 +126,7 @@ export function Navbar() {
                     key={route.path}
                     to={route.path}
                     className={cn(
-                      "flex items-center px-4 py-3 rounded-md transition-colors",
+                      "flex items-center px-4 py-3 rounded-lg transition-colors",
                       location.pathname === route.path
                         ? "bg-primary/10 text-primary font-medium"
                         : "text-slate-700 hover:bg-slate-100"
@@ -135,7 +136,7 @@ export function Navbar() {
                     {route.name}
                   </Link>
                 ))}
-                <Button className="mt-4">
+                <Button className="mt-4 rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
                   <Link to="/contact">Get in Touch</Link>
                 </Button>
               </nav>
