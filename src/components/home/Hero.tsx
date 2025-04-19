@@ -10,10 +10,6 @@ export function Hero() {
     target: containerRef,
     offset: ["start start", "end start"]
   });
-
-  const buildingY = useTransform(scrollYProgress, [0, 1], [0, -200]);
-  const buildingScale = useTransform(scrollYProgress, [0, 1], [1.1, 1]);
-  const buildingOpacity = useTransform(scrollYProgress, [0, 0.8], [0.5, 0]);
   
   const contentY = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
@@ -21,28 +17,8 @@ export function Hero() {
   return (
     <div 
       ref={containerRef} 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center bg-slate-900"
     >
-      {/* Background Image with Gradient Overlay */}
-      <motion.div 
-        className="absolute inset-0 z-0"
-        style={{
-          y: buildingY,
-          scale: buildingScale,
-          opacity: buildingOpacity
-        }}
-      >
-        <div 
-          className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"
-        />
-        <div 
-          className="h-full w-full bg-cover bg-center bg-fixed"
-          style={{
-            backgroundImage: "url('https://images.pexels.com/photos/260931/pexels-photo-260931.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750')"
-          }}
-        />
-      </motion.div>
-
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -119,12 +95,6 @@ export function Hero() {
           <ChevronDown className="h-6 w-6 opacity-80" />
         </motion.div>
       </motion.div>
-
-      {/* Decorative Elements */}
-      <div className="absolute inset-0 z-[1] pointer-events-none">
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/50 to-transparent" />
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/50 to-transparent" />
-      </div>
     </div>
   );
 }
