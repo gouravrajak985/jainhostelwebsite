@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, ArrowRight } from 'lucide-react';
@@ -10,8 +10,9 @@ export function Hero() {
     target: containerRef,
     offset: ["start start", "end start"]
   });
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  
+  // Only apply parallax to background elements, not the main content
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   return (
     <div 
@@ -23,21 +24,15 @@ export function Hero() {
 
       {/* Content */}
       <div className="container mx-auto px-8 md:px-12 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Left Content */}
-          <motion.div
-            className="text-left lg:pl-8"
-            style={{
-              y: contentY,
-              opacity: contentOpacity
-            }}
-          >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+          {/* Left Content - No scroll effects applied */}
+          <div className="text-left lg:pl-8 order-2 lg:order-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 leading-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 lg:mb-8 leading-tight">
                 Your Home Away <br />
                 From Home
               </h1>
@@ -48,7 +43,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <p className="text-xl md:text-2xl text-slate-600 mb-10 max-w-2xl">
+              <p className="text-lg md:text-xl lg:text-2xl text-slate-600 mb-8 lg:mb-10 max-w-2xl">
                 Experience comfortable living with modern amenities and a supportive community designed for your academic success.
               </p>
             </motion.div>
@@ -57,46 +52,47 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-6"
+              className="flex flex-col sm:flex-row gap-4 lg:gap-6"
             >
               <Button 
                 asChild
                 size="lg" 
-                className="text-lg px-10 py-6 bg-primary hover:bg-primary/90"
+                className="text-base lg:text-lg px-8 lg:px-10 py-4 lg:py-6 bg-primary hover:bg-primary/90"
               >
                 <Link to="/rooms">
                   Explore Rooms
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-4 lg:h-5 w-4 lg:w-5" />
                 </Link>
               </Button>
               <Button 
                 asChild
                 size="lg" 
                 variant="outline" 
-                className="text-lg px-10 py-6 text-slate-900 border-slate-200 hover:bg-slate-100"
+                className="text-base lg:text-lg px-8 lg:px-10 py-4 lg:py-6 text-slate-900 border-slate-200 hover:bg-slate-100"
               >
                 <Link to="/contact">
                   Book a Visit
                 </Link>
               </Button>
             </motion.div>
-          </motion.div>
+          </div>
 
-          {/* Right Content - Building Image with Box Effect */}
+          {/* Right Content - Background elements with parallax */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="relative hidden lg:block lg:pr-8"
+            className="relative order-1 lg:order-2 lg:pr-8 mt-24 lg:mt-0"
+            style={{ y: backgroundY }}
           >
             <motion.div
-              className="absolute inset-0 bg-primary/20 rounded-3xl transform -rotate-6"
+              className="absolute inset-0 bg-primary/20 rounded-3xl transform -rotate-6 hidden md:block"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
             />
             <motion.div
-              className="absolute inset-0 bg-primary/10 rounded-3xl transform rotate-3"
+              className="absolute inset-0 bg-primary/10 rounded-3xl transform rotate-3 hidden md:block"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
@@ -110,29 +106,12 @@ export function Hero() {
               <img 
                 src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" 
                 alt="Hostel Building" 
-                className="w-full h-[600px] object-cover rounded-3xl transform hover:scale-105 transition-transform duration-500"
+                className="w-full h-64 md:h-80 lg:h-[600px] object-cover rounded-3xl transform hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-600"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-          className="flex flex-col items-center"
-        >
-          <span className="text-sm font-medium mb-2">Scroll to explore</span>
-          <ChevronDown className="h-6 w-6 opacity-80" />
-        </motion.div>
-      </motion.div>
     </div>
   );
 }
