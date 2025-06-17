@@ -94,20 +94,19 @@ export function Rooms() {
     {
       title: "Double Room",
       description: "Ideal for those who enjoy companionship while maintaining comfort.",
-      imageUrl: "./public/images/roomimg5.jpg",
+      imageUrl: "/images/roomimg5.jpg",
       features: [
         "Two single beds",
         "Twin study desks and chairs",
         "Shared wardrobe space",
         "Air Cooled Room",
-
       ],
       tourLink: "https://example.com/virtual-tour/double-room"
     },
     {
       title: "Triple Room",
       description: "Perfect for small groups or friends sharing a space together.",
-      imageUrl: "./public/images/roomimg3.jpg",
+      imageUrl: "/images/roomimg3.jpg",
       features: [
         "Three single beds",
         "Three study desks and chairs",
