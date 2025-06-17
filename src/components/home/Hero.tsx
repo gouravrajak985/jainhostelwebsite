@@ -104,7 +104,7 @@ export function Hero() {
               transition={{ duration: 1, delay: 0.7 }}
             >
               <img 
-                src='./public/images/banner.jpg'
+                src='/images/banner.jpg'
                 alt="Hostel Building" 
                 className="w-full h-64 md:h-80 lg:h-[600px] object-cover rounded-3xl transform hover:scale-105 transition-transform duration-500"
               />

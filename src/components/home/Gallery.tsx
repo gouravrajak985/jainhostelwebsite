@@ -41,31 +41,31 @@ export function Gallery() {
   const galleryPhotos: GalleryPhoto[] = [
     {
       id: 1,
-      url: './public/images/messimg3.jpg',
+      url: '/images/messimg3.jpg',
       alt: "Spacious Mess Area",
       category: "Dining"
     },
     {
       id: 2,
-      url: './public/images/roomimg5.jpg',
+      url: '/images/roomimg5.jpg',
       alt: "Double Occupancy Room",
       category: "Rooms"
     },
     {
       id: 3,
-      url: './public/images/roomimg3.jpg',
+      url: '/images/roomimg3.jpg',
       alt: "Triple Occupancy Room",
       category: "Rooms"
     },
     {
       id: 4,
-      url: './public/images/liftimg1.jpg',
+      url: '/images/liftimg1.jpg',
       alt: "Modern Lift Facility",
       category: "Facilities"
     },
     {
       id: 5,
-      url: './public/images/messimg2.jpg',
+      url: '/images/messimg2.jpg',
       alt: "Dining Experience",
       category: "Dining"
     },
