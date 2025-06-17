@@ -7,21 +7,20 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from '@/components/ui/navigation-menu';
-import { Home, BuildingIcon, PanelTopIcon, BedDoubleIcon, ImageIcon, PhoneCallIcon, Menu } from 'lucide-react';
+import { Home, BuildingIcon, PanelTopIcon, ImageIcon, PhoneCallIcon, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const routes = [
   { name: 'Home', path: '/', icon: <Home className="h-4 w-4 mr-2" /> },
-  { name: 'About', path: '/about', icon: <BuildingIcon className="h-4 w-4 mr-2" /> },
   { name: 'Facilities', path: '/facilities', icon: <PanelTopIcon className="h-4 w-4 mr-2" /> },
-  { name: 'Rooms', path: '/rooms', icon: <BedDoubleIcon className="h-4 w-4 mr-2" /> },
   { name: 'Photos', path: '/photos', icon: <ImageIcon className="h-4 w-4 mr-2" /> },
   { name: 'Contact Us', path: '/contact', icon: <PhoneCallIcon className="h-4 w-4 mr-2" /> },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   
   useEffect(() => {
@@ -37,6 +36,15 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scroll to top when location changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <header 
       className={cn(
@@ -51,6 +59,7 @@ export function Navbar() {
           <Link 
             to="/" 
             className="flex items-center space-x-2 text-slate-900"
+            onClick={handleLinkClick}
           >
             <BuildingIcon className="h-8 w-8 text-primary" />
             <span className="font-bold text-xl">Boy's Stay Hostel</span>
@@ -62,7 +71,7 @@ export function Navbar() {
               <NavigationMenuList className="space-x-1">
                 {routes.map((route) => (
                   <NavigationMenuItem key={route.path}>
-                    <Link to={route.path}>
+                    <Link to={route.path} onClick={handleLinkClick}>
                       <NavigationMenuLink 
                         className={cn(
                           "px-4 py-2 rounded-full transition-colors duration-300 inline-flex items-center",
@@ -84,12 +93,12 @@ export function Navbar() {
               asChild
               className="rounded-full transition-all duration-300 font-medium bg-primary text-primary-foreground hover:bg-primary/90"
             >
-              <Link to="/contact">Get in Touch</Link>
+              <Link to="/contact" onClick={handleLinkClick}>Get in Touch</Link>
             </Button>
           </div>
 
           {/* Mobile Navigation */}
-          <Sheet>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button 
                 variant="ghost" 
@@ -105,6 +114,7 @@ export function Navbar() {
                   <Link
                     key={route.path}
                     to={route.path}
+                    onClick={handleLinkClick}
                     className={cn(
                       "flex items-center px-4 py-3 rounded-lg transition-colors",
                       location.pathname === route.path
@@ -117,7 +127,7 @@ export function Navbar() {
                   </Link>
                 ))}
                 <Button className="mt-4 rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <Link to="/contact">Get in Touch</Link>
+                  <Link to="/contact" onClick={handleLinkClick}>Get in Touch</Link>
                 </Button>
               </nav>
             </SheetContent>

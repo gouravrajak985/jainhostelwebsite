@@ -21,20 +21,15 @@ interface FacilityProps {
   description: string;
 }
 
-function FacilityCard({ icon, title, description }: FacilityProps) {
+function FacilityCard({ icon, title }: FacilityProps) {
   return (
     <Card className="h-full transition-all duration-300 hover:shadow-lg border-2 border-transparent hover:border-primary/20">
       <CardHeader className="pb-2">
         <div className="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-md mb-3">
           {icon}
         </div>
-        <CardTitle className="text-xl">{title}</CardTitle>
+        <CardTitle className="text-xl pb-4">{title}</CardTitle>
       </CardHeader>
-      <CardContent>
-        <CardDescription className="text-base text-muted-foreground">
-          {description}
-        </CardDescription>
-      </CardContent>
     </Card>
   );
 }

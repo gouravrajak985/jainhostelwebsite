@@ -6,12 +6,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { 
-  PhoneCall, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  MessageSquare, 
+import {
+  PhoneCall,
+  Mail,
+  MapPin,
+  Clock,
+  MessageSquare,
   HomeIcon,
   Calendar,
   HelpCircle
@@ -79,9 +79,9 @@ export function Contact() {
                 <CardContent>
                   <CardDescription className="text-base text-slate-700">
                     <p className="mb-2">Main Office:</p>
-                    <p className="font-medium text-slate-900">+1 (555) 123-4567</p>
+                    <p className="font-medium text-slate-900">(+91) 9826080999</p>
                     <p className="mt-4 mb-2">Warden/Security:</p>
-                    <p className="font-medium text-slate-900">+1 (555) 987-6543</p>
+                    <p className="font-medium text-slate-900">(+91) 9300909071</p>
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -98,9 +98,9 @@ export function Contact() {
                 <CardContent>
                   <CardDescription className="text-base text-slate-700">
                     <p className="mb-2">General Inquiries:</p>
-                    <p className="font-medium text-slate-900">info@boyshostel.com</p>
+                    <p className="font-medium text-slate-900">amitmodi@girlsstayhostel.com</p>
                     <p className="mt-4 mb-2">Bookings & Admissions:</p>
-                    <p className="font-medium text-slate-900">admissions@boyshostel.com</p>
+                    <p className="font-medium text-slate-900">sumitmodi@girlsstayhostel.com</p>
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -117,13 +117,8 @@ export function Contact() {
                 <CardContent>
                   <CardDescription className="text-base text-slate-700">
                     <p className="font-medium text-slate-900">
-                      123 University Avenue,<br />
-                      College District,<br />
-                      City Center,<br />
-                      State 12345
-                    </p>
-                    <p className="mt-4 text-sm">
-                      Near Central Metro Station
+                      Jain's Boys Stay Hostel R-62, zone - II M.P. Nagar, Near Hotel Arya
+                      Bhawan, Bhopal M.P., India
                     </p>
                   </CardDescription>
                 </CardContent>
@@ -160,33 +155,16 @@ export function Contact() {
             <div>
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Find Us</h2>
               <div className="h-[400px] bg-white rounded-lg shadow-md overflow-hidden">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976397304605!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1645908687169!5m2!1sen!2s" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen 
-                  loading="lazy" 
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976397304605!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1645908687169!5m2!1sen!2s"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Google Maps"
                 ></iframe>
-              </div>
-              <div className="mt-6">
-                <h3 className="text-lg font-semibold mb-3">Directions</h3>
-                <div className="space-y-3 text-slate-700">
-                  <p className="flex items-start">
-                    <span className="font-medium mr-2">From Airport:</span> 
-                    <span>Take the Airport Express to Central Station, then Bus 42 to University Avenue.</span>
-                  </p>
-                  <p className="flex items-start">
-                    <span className="font-medium mr-2">By Public Transport:</span> 
-                    <span>Subway Blue Line to Central Metro Station, 5-minute walk towards University Avenue.</span>
-                  </p>
-                  <p className="flex items-start">
-                    <span className="font-medium mr-2">By Car:</span> 
-                    <span>From Highway 101, take Exit 25B, follow University Avenue for 2 miles. Visitor parking available.</span>
-                  </p>
-                </div>
               </div>
             </div>
 

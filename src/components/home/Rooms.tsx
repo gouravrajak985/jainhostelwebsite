@@ -10,7 +10,6 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import { Link } from 'react-router-dom';
 import { BedDoubleIcon, ExternalLink, Check } from 'lucide-react';
 
 interface RoomCardProps {
@@ -93,39 +92,27 @@ export function Rooms() {
 
   const rooms = [
     {
-      title: "Single Room",
-      description: "Perfect for students who prefer privacy and personal space.",
-      imageUrl: "https://images.pexels.com/photos/237371/pexels-photo-237371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      features: [
-        "Comfortable single bed",
-        "Personal study desk and chair",
-        "Built-in wardrobe",
-        "Air conditioning"
-      ],
-      tourLink: "https://example.com/virtual-tour/single-room"
-    },
-    {
       title: "Double Room",
       description: "Ideal for those who enjoy companionship while maintaining comfort.",
-      imageUrl: "https://images.pexels.com/photos/1648768/pexels-photo-1648768.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
+      imageUrl: "./public/images/roomimg5.jpg",
       features: [
         "Two single beds",
         "Twin study desks and chairs",
         "Shared wardrobe space",
-        "Air conditioning"
+        "Air Cooled Room",
+
       ],
       tourLink: "https://example.com/virtual-tour/double-room"
     },
     {
-      title: "Premium Suite",
-      description: "Our luxury option with enhanced amenities and extra space.",
-      imageUrl: "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
+      title: "Triple Room",
+      description: "Perfect for small groups or friends sharing a space together.",
+      imageUrl: "./public/images/roomimg3.jpg",
       features: [
-        "Queen-sized bed",
-        "Private bathroom",
-        "Expanded study area",
-        "Mini refrigerator",
-        "Premium furnishings"
+        "Three single beds",
+        "Three study desks and chairs",
+        "Shared wardrobe space",
+        "Air Cooled Room",
       ],
       tourLink: "https://example.com/virtual-tour/premium-suite"
     }
@@ -147,7 +134,9 @@ export function Rooms() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${rooms.length === 2 ? '2' : '3'} gap-8 ${
+            rooms.length === 2 ? 'lg:max-w-5xl mx-auto' : ''
+          }`}
         >
           {rooms.map((room, index) => (
             <motion.div key={index} variants={itemVariants}>
@@ -161,14 +150,6 @@ export function Rooms() {
             </motion.div>
           ))}
         </motion.div>
-
-        <div className="mt-12 text-center">
-          <Button asChild size="lg">
-            <Link to="/rooms">
-              View All Room Options
-            </Link>
-          </Button>
-        </div>
       </div>
     </section>
   );

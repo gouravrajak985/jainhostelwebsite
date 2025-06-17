@@ -16,7 +16,7 @@ interface Photo {
 
 export function Photos() {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
-  
+
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -49,163 +49,95 @@ export function Photos() {
     {
       id: 1,
       category: "exterior",
-      url: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
+      url: "/images/banner.jpg",
       alt: "Hostel Building Front View",
       description: "Front view of our hostel building with modern architecture and well-maintained surroundings."
     },
+
+    // Rooms Category
     {
       id: 2,
-      category: "exterior",
-      url: "https://images.pexels.com/photos/2587054/pexels-photo-2587054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Hostel Entrance",
-      description: "Welcoming entrance to our hostel with secure access control system."
+      category: "rooms",
+      url: "/images/roomimg1.jpg",
+      alt: "Double Room",
+      description: "Standard double room with comfortable beds, study desk, and storage space."
     },
     {
       id: 3,
-      category: "exterior",
-      url: "https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Outdoor Recreational Area",
-      description: "Spacious outdoor area for residents to relax and socialize."
-    },
-    {
-      id: 4,
-      category: "exterior",
-      url: "https://images.pexels.com/photos/2079249/pexels-photo-2079249.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Hostel Side View",
-      description: "Side view of the hostel showing the architectural details and design elements."
-    },
-    {
-      id: 5,
-      category: "exterior",
-      url: "https://images.pexels.com/photos/1330753/pexels-photo-1330753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Hostel Gardens",
-      description: "Beautiful gardens surrounding the hostel with seating areas for relaxation."
-    },
-    
-    // Rooms Category
-    {
-      id: 6,
       category: "rooms",
-      url: "https://images.pexels.com/photos/237371/pexels-photo-237371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Single Room",
-      description: "Standard single room with comfortable bed, study desk, and storage space."
-    },
-    {
-      id: 7,
-      category: "rooms",
-      url: "https://images.pexels.com/photos/1648768/pexels-photo-1648768.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
+      url: "/images/roomimg5.jpg",
       alt: "Double Room",
       description: "Shared room for two residents with individual study spaces."
     },
     {
-      id: 8,
+      id: 4,
       category: "rooms",
-      url: "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Premium Suite",
-      description: "Luxurious premium suite with enhanced amenities and extra space."
+      url: "/images/roomimg6.jpg",
+      alt: "Double Room",
+      description: "Shared room for two residents with individual study spaces."
     },
     {
-      id: 9,
+      id: 5,
       category: "rooms",
-      url: "https://images.pexels.com/photos/210265/pexels-photo-210265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Executive Suite Bedroom",
+      url: "/images/roomimg3.jpg",
+      alt: "Triple Room",
       description: "Bedroom area in our executive suite with premium furnishings."
     },
     {
-      id: 10,
+      id: 6,
       category: "rooms",
-      url: "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Room Interior",
-      description: "Interior view of a standard room showing the layout and furnishings."
+      url: "/images/tripleroom1.jpg",
+      alt: "Triple Room",
+      description: "Bedroom area in our executive suite with premium furnishings."
     },
-    
+
     // Facilities Category
     {
-      id: 11,
+      id: 7,
       category: "facilities",
-      url: "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Modern Kitchen",
-      description: "Fully equipped communal kitchen with modern appliances."
+      url: "/images/liftimg1.jpg",
+      alt: "Lift Facility",
+      description: "Modern lift facility providing easy access to all floors."
     },
-    {
-      id: 12,
+     {
+      id: 7,
       category: "facilities",
-      url: "https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Study Room",
-      description: "Quiet study area with comfortable seating and good lighting."
-    },
-    {
-      id: 13,
-      category: "facilities",
-      url: "https://images.pexels.com/photos/279746/pexels-photo-279746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Gym Facility",
-      description: "Modern fitness center with cardio and weight training equipment."
-    },
-    {
-      id: 14,
-      category: "facilities",
-      url: "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Recreation Room",
-      description: "Entertainment area with games and comfortable seating."
-    },
-    {
-      id: 15,
-      category: "facilities",
-      url: "https://images.pexels.com/photos/2516406/pexels-photo-2516406.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Common Lounge",
-      description: "Comfortable lounge area for socializing and relaxation."
-    },
-    {
-      id: 16,
-      category: "facilities",
-      url: "https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Computer Lab",
-      description: "Computer lab with high-performance systems for residents' use."
-    },
-    {
-      id: 17,
-      category: "facilities",
-      url: "https://images.pexels.com/photos/5384423/pexels-photo-5384423.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Laundry Room",
-      description: "Modern laundry facility with multiple washers and dryers."
+      url: "/images/liftimg1.jpg",
+      alt: "Lift Facility",
+      description: "Modern lift facility providing easy access to all floors."
     },
     
-    // Events Category
+    // Kitchen Category
     {
-      id: 18,
-      category: "events",
-      url: "https://images.pexels.com/photos/7214167/pexels-photo-7214167.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Movie Night",
-      description: "Residents enjoying a movie night in the recreation room."
+      id: 8,
+      category: "kitchen",
+      url: "/images/messimg1.jpg",
+      alt: "Kitchen Area",
+      description: "Spacious kitchen area with modern appliances for residents to eat and prepare meals."
+    }, 
+    {
+      id: 9,
+      category: "kitchen",
+      url: "/images/messimg2.jpg",
+      alt: "Kitchen Area",
+      description: "Spacious kitchen area with modern appliances for residents to eat and prepare meals."
     },
-    {
-      id: 19,
-      category: "events",
-      url: "https://images.pexels.com/photos/1157557/pexels-photo-1157557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Game Tournament",
-      description: "Students participating in a game tournament in the common area."
+       {
+      id: 10,
+      category: "kitchen",
+      url: "/images/messimg3.jpg",
+      alt: "Kitchen Area",
+      description: "Spacious kitchen area with modern appliances for residents to eat and prepare meals."
     },
-    {
-      id: 20,
-      category: "events",
-      url: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Study Group",
-      description: "Residents collaborating in a study group session."
+
+    // facilities Category
+     {
+      id: 7,
+      category: "facilities",
+      url: "/images/dustbin1.jpg",
+      alt: "Dustbin Facility",
+      description: "Proper waste management with strategically placed dustbins throughout the hostel."
     },
-    {
-      id: 21,
-      category: "events",
-      url: "https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Music Night",
-      description: "Musical evening featuring talented residents performing for their peers."
-    },
-    {
-      id: 22,
-      category: "events",
-      url: "https://images.pexels.com/photos/3810788/pexels-photo-3810788.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750",
-      alt: "Outdoor Gathering",
-      description: "Residents enjoying an outdoor social gathering in the hostel garden."
-    }
   ];
 
   return (
@@ -232,7 +164,7 @@ export function Photos() {
                 <TabsTrigger value="exterior">Exterior</TabsTrigger>
                 <TabsTrigger value="rooms">Rooms</TabsTrigger>
                 <TabsTrigger value="facilities">Facilities</TabsTrigger>
-                <TabsTrigger value="events">Events</TabsTrigger>
+                <TabsTrigger value="kitchen">Kitchen</TabsTrigger>
               </TabsList>
             </div>
 
@@ -302,28 +234,28 @@ export function Photos() {
 
       {/* Photo Lightbox */}
       {selectedPhoto && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedPhoto(null)}
         >
-          <div 
+          <div
             className="max-w-5xl w-full relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               size="icon"
               className="absolute right-0 top-0 z-10 text-white bg-black bg-opacity-50 rounded-full -translate-y-full"
               onClick={() => setSelectedPhoto(null)}
             >
               <XIcon className="h-6 w-6" />
             </Button>
-            
+
             <div className="bg-white rounded-lg overflow-hidden">
               <div className="relative">
                 <AspectRatio ratio={16 / 9}>
-                  <img 
-                    src={selectedPhoto.url} 
+                  <img
+                    src={selectedPhoto.url}
                     alt={selectedPhoto.alt}
                     className="w-full h-full object-cover"
                   />
@@ -355,8 +287,8 @@ function GalleryItem({ photo, onClick, variants }: GalleryItemProps) {
       onClick={onClick}
     >
       <AspectRatio ratio={1 / 1}>
-        <img 
-          src={photo.url} 
+        <img
+          src={photo.url}
           alt={photo.alt}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />

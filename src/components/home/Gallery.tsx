@@ -41,52 +41,34 @@ export function Gallery() {
   const galleryPhotos: GalleryPhoto[] = [
     {
       id: 1,
-      url: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      alt: "Hostel Building Exterior",
-      category: "Exterior"
+      url: './public/images/messimg3.jpg',
+      alt: "Spacious Mess Area",
+      category: "Dining"
     },
     {
       id: 2,
-      url: "https://images.pexels.com/photos/237371/pexels-photo-237371.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      alt: "Comfortable Single Room",
+      url: './public/images/roomimg5.jpg',
+      alt: "Double Occupancy Room",
       category: "Rooms"
     },
     {
       id: 3,
-      url: "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      alt: "Modern Kitchen Facility",
-      category: "Kitchen"
-    },
-    {
-      id: 4,
-      url: "https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      alt: "Study Room",
-      category: "Study Area"
-    },
-    {
-      id: 5,
-      url: "https://images.pexels.com/photos/279746/pexels-photo-279746.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      alt: "Fitness Center",
-      category: "Gym"
-    },
-    {
-      id: 6,
-      url: "https://images.pexels.com/photos/2516406/pexels-photo-2516406.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      alt: "Common Lounge Area",
-      category: "Lounge"
-    },
-    {
-      id: 7,
-      url: "https://images.pexels.com/photos/1648768/pexels-photo-1648768.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      alt: "Double Room",
+      url: './public/images/roomimg3.jpg',
+      alt: "Triple Occupancy Room",
       category: "Rooms"
     },
     {
-      id: 8,
-      url: "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=800&h=600",
-      alt: "Recreation Room",
-      category: "Recreation"
-    }
+      id: 4,
+      url: './public/images/liftimg1.jpg',
+      alt: "Modern Lift Facility",
+      category: "Facilities"
+    },
+    {
+      id: 5,
+      url: './public/images/messimg2.jpg',
+      alt: "Dining Experience",
+      category: "Dining"
+    },
   ];
 
   return (
@@ -113,31 +95,27 @@ export function Gallery() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[250px] mb-12"
         >
           {galleryPhotos.map((photo, index) => (
             <motion.div
               key={photo.id}
               variants={itemVariants}
-              className={`relative overflow-hidden rounded-lg group cursor-pointer ${
-                index === 0 ? 'col-span-2 row-span-2' : 
-                index === 3 ? 'col-span-2' : 
-                ''
+              className={`relative overflow-hidden rounded-lg ${
+                index === 0 ? 'sm:col-span-2 sm:row-span-2' : 
+                index % 3 === 2 ? 'lg:col-span-1 lg:row-span-2' : 
+                'col-span-1'
               }`}
             >
-              <div className={`relative ${
-                index === 0 ? 'h-80 md:h-96' : 
-                index === 3 ? 'h-48 md:h-56' : 
-                'h-48'
-              }`}>
+              <div className="relative group h-full">
                 <img
                   src={photo.url}
                   alt={photo.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-end">
-                  <div className="p-4 w-full translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-lg p-3">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-lg p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                       <h3 className="font-semibold text-slate-900 text-sm mb-1">{photo.alt}</h3>
                       <span className="text-xs text-primary font-medium">{photo.category}</span>
                     </div>

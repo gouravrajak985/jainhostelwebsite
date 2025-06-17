@@ -54,18 +54,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-slate-300 hover:text-primary transition-colors flex items-center">
-                  <span className="mr-2">•</span> About Us
-                </Link>
-              </li>
-              <li>
                 <Link to="/facilities" className="text-slate-300 hover:text-primary transition-colors flex items-center">
                   <span className="mr-2">•</span> Facilities
-                </Link>
-              </li>
-              <li>
-                <Link to="/rooms" className="text-slate-300 hover:text-primary transition-colors flex items-center">
-                  <span className="mr-2">•</span> Rooms
                 </Link>
               </li>
               <li>
@@ -88,22 +78,23 @@ export function Footer() {
               <li className="flex items-start">
                 <PhoneCall className="h-5 w-5 text-primary mr-3 mt-1" />
                 <div>
-                  <p className="text-slate-300">+1 (555) 123-4567</p>
-                  <p className="text-slate-300">+1 (555) 987-6543</p>
+                  <p className="text-slate-300">(+91) 9826080999</p>
+                  <p className="text-slate-300">(+91) 9300909071</p>
                 </div>
               </li>
               <li className="flex items-start">
                 <Mail className="h-5 w-5 text-primary mr-3 mt-1" />
                 <div>
-                  <p className="text-slate-300">info@boyshostel.com</p>
-                  <p className="text-slate-300">support@boyshostel.com</p>
+                  <p className="text-slate-300">amitmodi@girlsstayhostel.com,</p>
+                  <p className="text-slate-300">sumitmodi@girlsstayhostel.com</p>
                 </div>
               </li>
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-primary mr-3 mt-1" />
                 <p className="text-slate-300">
-                  123 University Avenue, College District,
-                  <br />City Center, State 12345
+                  Jain's Boys Stay Hostel R-62, zone-
+                  <br />II M.P. Nagar, Near Hotel Arya
+                  <br />Bhopal, Madhya Pradesh
                 </p>
               </li>
               <li className="flex items-start">
@@ -139,21 +130,8 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-400 text-sm">
-            © {new Date().getFullYear()} Boy's Hostel. All rights reserved.
-          </p>
-          <div className="mt-4 md:mt-0">
-            <ul className="flex space-x-6 text-sm">
-              <li>
-                <a href="#" className="text-slate-400 hover:text-primary transition-colors">Privacy Policy</a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-primary transition-colors">Terms of Service</a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-primary transition-colors">Cookie Policy</a>
-              </li>
-            </ul>
-          </div>
+            © {new Date().getFullYear()} Boy's Stay Hostel. All rights reserved.
+          </p>       
         </div>
       </div>
     </footer>
